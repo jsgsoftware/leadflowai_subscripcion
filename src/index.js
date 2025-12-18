@@ -1,6 +1,7 @@
 const express = require('express');
 const dotenv = require('dotenv');
 const mainRouter = require('./routes');
+const { startCronJobs } = require('./jobs/subscriptionCron');
 
 // Load environment variables
 dotenv.config();
@@ -26,4 +27,7 @@ app.get('/health', (req, res) => {
 
 app.listen(port, () => {
   console.log(`Server is listening at http://localhost:${port}`);
+  
+  // Start cron jobs after server is ready
+  startCronJobs();
 });

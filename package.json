@@ -7,7 +7,12 @@
     "start": "node src/index.js",
     "dev": "nodemon src/index.js",
     "migrate:up": "node src/scripts/migrate.js up",
-    "migrate:down": "node src/scripts/migrate.js down"
+    "migrate:down": "node src/scripts/migrate.js down",
+    "docker:build": "docker build -t leadflow-subscription-api .",
+    "docker:run": "docker-compose up -d",
+    "docker:stop": "docker-compose down",
+    "docker:logs": "docker-compose logs -f api",
+    "docker:restart": "docker-compose restart api"
   },
   "keywords": [],
   "author": "",
@@ -16,6 +21,7 @@
   "dependencies": {
     "dotenv": "^17.2.3",
     "express": "^5.2.1",
+    "node-cron": "^4.2.1",
     "pg": "^8.16.3"
   },
   "devDependencies": {
